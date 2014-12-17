@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Reply {
 	private int id;
-	private int replyId;
+	private int postId;
 	private String userName;
 	private Timestamp time;
 	private String content;
@@ -17,12 +17,12 @@ public class Reply {
 		this.id = id;
 	}
 
-	public int getReplyId() {
-		return replyId;
+	public int getPostId() {
+		return postId;
 	}
 
-	public void setReplyId(int replyId) {
-		this.replyId = replyId;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 
 	public String getUserName() {

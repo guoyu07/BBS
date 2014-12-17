@@ -17,10 +17,6 @@ public class PostDAO {
 		ResultSet rs=null;
 		ArrayList<Post> posts = new ArrayList<Post>();
 		conn=DBHelper.getConnection();
-		if(conn==null){
-			System.out.println("fuck");
-			return null;
-		}
 		String sql = "select * from posts";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -49,5 +45,39 @@ public class PostDAO {
 			}
 		}
 		return posts;
+	}
+    //获取某个帖子的信息
+	public Post getPostById(int id){
+		Connection conn=null;
+		ResultSet rs=null;
+		Post post=new Post();
+		conn=DBHelper.getConnection();
+		String sql = "select * from posts where id=?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()){
+				post.setId(rs.getInt("id"));
+				post.setUserName(rs.getString("username"));
+				post.setTitle(rs.getString("title"));
+				post.setContent(rs.getString("content"));
+				post.setTime(rs.getTimestamp("time"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//释放数据集对象
+			if(rs!=null){
+				try {
+					rs.close();
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				rs=null;
+			}
+		}
+		return post;
 	}
 }

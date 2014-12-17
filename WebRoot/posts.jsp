@@ -28,7 +28,7 @@
 </head>
 <body>
 	<h2>帖子列表</h2>
-	<table>
+	<table border="1" cellpadding="10" cellspacing="0">
 		<tr>
 			<td>标题</td>
 			<td>发帖人</td>
@@ -37,16 +37,16 @@
 		<%
 			PostDAO pd = new PostDAO();
 			ArrayList<Post> posts = pd.getAllPosts();
-			//for (int i = 0; i < posts.size(); i++) {	
-			Post post = posts.get(0);
+			for (int i = 0; i < posts.size(); i++) {
+				Post post = posts.get(i);
 		%>
 		<tr>
-		<td><%=post.getTitle()%></td>
-		<td><%=post.getUserName()%></td>
-		<td><%=post.getTime()%></td>
+			<td><%=post.getTitle()%></td>
+			<td><%=post.getUserName()%></td>
+			<td><%=post.getTime()%></td>
 		</tr>
 		<%
-			//}
+			}
 		%>
 	</table>
 </body>
