@@ -19,7 +19,7 @@ create table posts (
 
 create table replys (
     id int primary key auto_increment,
-    replyid int not null,
+    postid int not null,
     username varchar(20) not null,
     content text not null,
     time timestamp

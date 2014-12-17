@@ -17,6 +17,7 @@ public class PostDAO {
 		ResultSet rs=null;
 		ArrayList<Post> posts = new ArrayList<Post>();
 		conn=DBHelper.getConnection();
+
 		String sql = "select * from posts";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -63,6 +64,9 @@ public class PostDAO {
 				post.setTitle(rs.getString("title"));
 				post.setContent(rs.getString("content"));
 				post.setTime(rs.getTimestamp("time"));
+			}
+			else{
+				return null;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

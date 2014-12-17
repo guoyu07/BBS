@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'login.jsp' starting page</title>
+<title>My JSP 'register.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -26,24 +26,34 @@
 </head>
 
 <body>
-	<h2 align="center">欢迎访问班级BBS</h2>
+
+	<h2 align="center">欢迎注册</h2>
 	<hr>
-	<div align="center" >
+	<div align="center">
 		<table bgcolor="#46A3FF">
-		<tr>
-		<td >用户名：</td>
-			<td ><input type="text" /></td>
-		</tr>
-		<tr>
-		<td >密码：</td>
-			<td><input type="password"/></td>
-		</tr>
-		<tr>
-		<td colspan="2" align="center">
-		<input type="button" value="注册"/>
-		<input type="button" value="登录"/>
-		</td>
-		</tr>
+			<tr>
+				<td>用户名</td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td>密码</td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td>确认密码</td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td>邮箱</td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td>电话号码</td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr align="center">
+				<td colspan="2"><input type="button" value="提交" /></td>
+			</tr>
 		</table>
 	</div>
 </body>
