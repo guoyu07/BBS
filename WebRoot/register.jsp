@@ -22,6 +22,33 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+<script type="text/javascript">
+	function validate_form(thisform) {
+		with (thisform) {
+			if (username.value == "") {
+				alert("用户名不能为空");
+				return false;
+			}
+			if (password.value == "") {
+				alert("密码不能为空");
+				return false;
+			}
+			if (password.value != repassword.value) {
+				alert("两次密码不一致");
+				repassword.value = "";
+				return false;
+			}
+			apos = email.value.indexOf("@");
+			dotpos = email.value.lastIndexOf(".");
+
+			if (apos < 1 || dotpos - apos < 2) {
+				alert("邮箱格式不正确");
+				return false;
+			}
+			return true;
+		}
+	}
+</script>
 
 </head>
 
@@ -30,7 +57,8 @@
 	<h2 align="center">欢迎注册</h2>
 	<hr>
 	<div align="center">
-		<form>
+		<form action="posts.jsp" onsubmit="return validate_form(this);"
+			method="post">
 			<table bgcolor="#46A3FF">
 				<tr>
 					<td>用户名</td>
@@ -53,7 +81,7 @@
 					<td><input type="text" name="phone" /></td>
 				</tr>
 				<tr align="center">
-					<td colspan="2"><input type="button" value="提交" /></td>
+					<td colspan="2"><input type="submit" value="提交" /></td>
 				</tr>
 			</table>
 		</form>
