@@ -27,6 +27,7 @@
 
 </head>
 <body>
+
 	<h2>帖子列表</h2>
 	<table border="1" cellpadding="10" cellspacing="0">
 		<tr>

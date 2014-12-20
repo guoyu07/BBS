@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=utf-8"%>
+<%@ page import="entity.User"%>
+<%@ page import="dao.UserDAO"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -86,5 +88,14 @@
 			</table>
 		</form>
 	</div>
+	<%
+		User user = new User();
+		user.setName(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
+		user.setEmail(request.getParameter("email"));
+		user.setPhone(request.getParameter("phone"));
+		UserDAO ud = new UserDAO();
+		ud.userLogin(user);
+	%>
 </body>
 </html>
