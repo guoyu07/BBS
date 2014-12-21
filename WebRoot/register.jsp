@@ -64,7 +64,7 @@
 			<table bgcolor="#46A3FF">
 				<tr>
 					<td>用户名</td>
-					<td><input type="text" name="username" /></td>
+					<td><input type="text" name="name" /></td>
 				</tr>
 				<tr>
 					<td>密码</td>
@@ -89,13 +89,6 @@
 		</form>
 	</div>
 	<%
-		User user = new User();
-		user.setName(request.getParameter("username"));
-		user.setPassword(request.getParameter("password"));
-		user.setEmail(request.getParameter("email"));
-		user.setPhone(request.getParameter("phone"));
-		UserDAO ud = new UserDAO();
-		ud.userLogin(user);
 	%>
 </body>
 </html>

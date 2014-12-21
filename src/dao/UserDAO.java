@@ -15,6 +15,7 @@ public class UserDAO {
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			System.out.println(1111111111);
 			stmt.setString(1, user.getName());
 			stmt.setString(2, user.getPassword());
 			stmt.setString(3, user.getEmail());

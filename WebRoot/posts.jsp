@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=utf-8"%>
 <%@ page import="dao.PostDAO"%>
+<%@ page import="dao.UserDAO"%>
 <%@ page import="entity.Post"%>
 <%
 	String path = request.getContextPath();
@@ -27,7 +28,14 @@
 
 </head>
 <body>
-
+	<jsp:useBean id="user" class="entity.User" scope="page" />
+	 <jsp:setProperty name="user" property="*" />
+	<%
+		if (user != null) {
+			UserDAO ud = new UserDAO();
+			ud.userLogin(user);
+		}
+	%>
 	<h2>帖子列表</h2>
 	<table border="1" cellpadding="10" cellspacing="0">
 		<tr>

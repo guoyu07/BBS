@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page import="entity.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,6 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+  <jsp:useBean id="user" class="entity.User" scope="page">
+    <h1>dddd</h1>
+    <jsp:setProperty name="user" property="*" />
+    UserName:<%=user.getName() %><br>
+    </jsp:useBean>
   </body>
 </html>
