@@ -23,22 +23,29 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+<style type="text/css">
+body {
+	margin-top: 100px;
+	margin-left: 100px;
+	margin-right: 100px
+}
+td{
+padding-left: 30px;
+padding-right: 30px
+}
+</style>
 </head>
 
-<body>
+<body >
 	<%
 		PostDAO pd = new PostDAO();
 		int postId = Integer.parseInt(request.getParameter("postid"));
 		Post post = pd.getPostById(postId);
 		ArrayList<Reply> replys = new ReplyDAO().getReply(postId);
 	%>
-	<h2><%=post.getTitle() %></h2>
+	<h2><%=post.getTitle()%></h2>
 	<hr>
-	<table>
+	<table border="1">
 		<tr>
 			<td><%=post.getUserName()%></td>
 			<td><%=post.getContent()%></td>
