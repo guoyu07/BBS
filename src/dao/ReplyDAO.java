@@ -17,7 +17,7 @@ public class ReplyDAO {
 		ResultSet rs=null;
 		ArrayList<Reply> replys = new ArrayList<Reply>();
 		conn=DBHelper.getConnection();
-		String sql = "select * from reply where postid=? ordery by time";
+		String sql = "select * from replys where postid=? order by time";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, postId);
@@ -26,6 +26,7 @@ public class ReplyDAO {
 			while(rs.next()){
 				Reply reply = new Reply();
 				reply.setId(rs.getInt("id"));
+				reply.setContent(rs.getString("content"));
 				reply.setPostId(rs.getInt("postid"));
 				reply.setUserName(rs.getString("username"));
 				reply.setTime(rs.getTimestamp("time"));

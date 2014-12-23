@@ -1,8 +1,9 @@
+<%@page import="dao.PostDAO"%>
+<%@page import="dao.ReplyDAO"%>
+<%@page import="entity.Post"%>
+<%@page import="entity.Reply"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=utf-8"%>
-<%@ page import="dao.PostDAO"%>
-<%@ page import="dao.UserDAO"%>
-<%@ page import="entity.Post"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -15,7 +16,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title></title>
+<title>My JSP 'detail.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -27,35 +28,28 @@
 	-->
 
 </head>
+
 <body>
-	<jsp:useBean id="user" class="entity.User" scope="page" />
-	<jsp:setProperty name="user" property="*" />
 	<%
-		if (user.getName() != null) {
-			UserDAO ud = new UserDAO();
-			ud.userLogin(user);
-		}
+		PostDAO pd = new PostDAO();
+		int postId = Integer.parseInt(request.getParameter("postid"));
+		Post post = pd.getPostById(postId);
+		ArrayList<Reply> replys = new ReplyDAO().getReply(postId);
 	%>
-	<h2>帖子列表</h2>
-	<table border="1" cellpadding="10" cellspacing="0">
+	<h2><%=post.getTitle() %></h2>
+	<hr>
+	<table>
 		<tr>
-			<td>标题</td>
-			<td>发帖人</td>
-			<td>时间</td>
+			<td><%=post.getUserName()%></td>
+			<td><%=post.getContent()%></td>
 		</tr>
 		<%
-			PostDAO pd = new PostDAO();
-			ArrayList<Post> posts = pd.getAllPosts();
-			for (int i = 0; i < posts.size(); i++) {
-				Post post = posts.get(i);
+			for (int i = 0; i < replys.size(); i++) {
+				Reply reply = replys.get(i);
 		%>
 		<tr>
-			<%
-				out.println("<td><a href='detail.jsp?postid=" + post.getId()
-							+ "'>" + post.getTitle() + "</a></td>");
-			%>
-			<td><%=post.getUserName()%></td>
-			<td><%=post.getTime()%></td>
+			<td><%=reply.getUserName()%></td>
+			<td><%=reply.getContent()%></td>
 		</tr>
 		<%
 			}
