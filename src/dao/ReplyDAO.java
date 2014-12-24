@@ -48,5 +48,21 @@ public class ReplyDAO {
 		}
 		return replys;
 	}
+	//发表一条回复
+	public void postReply(Reply reply){
+		Connection conn=null;
+		conn=DBHelper.getConnection();
+		String sql = "insert replys(postid,username,content) values(?,?,?)";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, reply.getPostId());
+			stmt.setString(2, reply.getUserName());
+			stmt.setString(3, reply.getContent());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -28,12 +28,23 @@
 
 </head>
 <body>
+	<%
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		Cookie usernameCookie = new Cookie("username", username);
+		Cookie passwordCookie = new Cookie("password", password);
+		//最大生存期限
+		usernameCookie.setMaxAge(864000);
+		passwordCookie.setMaxAge(864000);
+		response.addCookie(usernameCookie);
+		response.addCookie(passwordCookie);
+	%>
 	<jsp:useBean id="user" class="entity.User" scope="page" />
 	<jsp:setProperty name="user" property="*" />
 	<%
 		if (user.getName() != null) {
 			UserDAO ud = new UserDAO();
-			ud.userLogin(user);
+			ud.addUser(user);
 		}
 	%>
 	<h2>帖子列表</h2>

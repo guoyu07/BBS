@@ -8,7 +8,7 @@ import util.DBHelper;
 import entity.User;
 
 public class UserDAO {
-	public void userLogin(User user){
+	public void addUser(User user){
 		Connection conn=null;
 		conn=DBHelper.getConnection();
 		String sql = "insert users(name,password,email,phone) values(?,?,?,?)";
