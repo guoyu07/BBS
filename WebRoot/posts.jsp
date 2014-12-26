@@ -1,3 +1,4 @@
+<%@page import="entity.User"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=utf-8"%>
 <%@ page import="dao.PostDAO"%>
@@ -31,6 +32,20 @@
 	<%
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String type = request.getParameter("type");
+		System.out.println(type+username+password);
+		UserDAO ud = new UserDAO();
+		User user = new User();
+		user.setName(username);
+		user.setPassword(password);
+		if (type.equals("login")) {
+			boolean flag = ud.loginUser(user);
+			if (flag == false) {
+				response.sendRedirect("login.jsp");
+			}
+		}else{
+		ud.addUser(user);
+		}
 		Cookie usernameCookie = new Cookie("username", username);
 		Cookie passwordCookie = new Cookie("password", password);
 		//最大生存期限
@@ -39,14 +54,15 @@
 		response.addCookie(usernameCookie);
 		response.addCookie(passwordCookie);
 	%>
-	<jsp:useBean id="user" class="entity.User" scope="page" />
-	<jsp:setProperty name="user" property="*" />
-	<%
+	<!-- 
+	<jsp:useBean id="user1" class="entity.User" scope="page" />
+	<jsp:setProperty name="user1" property="*" />
+	<%/*
 		if (user.getName() != null) {
-			UserDAO ud = new UserDAO();
-			ud.addUser(user);
-		}
+			ud.addUser(user1);
+		}*/
 	%>
+	 -->
 	<h2>帖子列表</h2>
 	<table border="1" cellpadding="10" cellspacing="0">
 		<tr>

@@ -59,8 +59,8 @@
 	<h2 align="center">欢迎注册</h2>
 	<hr>
 	<div align="center">
-		<form action="posts.jsp" onsubmit="return validate_form(this);"
-			method="post">
+		<form action="posts.jsp?type='register'"
+			onsubmit="return validate_form(this);" method="post">
 			<table bgcolor="#46A3FF">
 				<tr>
 					<td>用户名</td>
@@ -88,7 +88,5 @@
 			</table>
 		</form>
 	</div>
-	<%
-	%>
 </body>
 </html>
