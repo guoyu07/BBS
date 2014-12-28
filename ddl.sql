@@ -5,7 +5,7 @@ create table users (
     id int primary key auto_increment,
     name varchar(20) not null,
     password varchar(20) not null,
-    email varchar(20),
+    email varchar(40),
     phone varchar(11)
 );
 
@@ -23,7 +23,7 @@ create table replys (
     username varchar(20) not null,
     content text not null,
     time timestamp
-)
+);
 
 
 
