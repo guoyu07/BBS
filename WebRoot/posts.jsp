@@ -33,7 +33,7 @@
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String type = request.getParameter("type");
-		System.out.println(type+username+password);
+
 		UserDAO ud = new UserDAO();
 		User user = new User();
 		user.setName(username);
@@ -43,8 +43,10 @@
 			if (flag == false) {
 				response.sendRedirect("login.jsp");
 			}
-		}else{
-		ud.addUser(user);
+		} else {
+			user.setEmail(request.getParameter("email"));
+			user.setPhone(request.getParameter("phone"));
+			ud.addUser(user);
 		}
 		Cookie usernameCookie = new Cookie("username", username);
 		Cookie passwordCookie = new Cookie("password", password);
@@ -58,10 +60,9 @@
 	<jsp:useBean id="user1" class="entity.User" scope="page" />
 	<jsp:setProperty name="user1" property="*" />
 	<%/*
-		if (user.getName() != null) {
-			ud.addUser(user1);
-		}*/
-	%>
+			 if (user.getName() != null) {
+			 ud.addUser(user1);
+			 }*/%>
 	 -->
 	<h2>帖子列表</h2>
 	<table border="1" cellpadding="10" cellspacing="0">

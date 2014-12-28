@@ -64,15 +64,15 @@
 			<table bgcolor="#46A3FF">
 				<tr>
 					<td>用户名</td>
-					<td><input type="text" name="name" /></td>
+					<td><input type="text" name="username" /></td>
 				</tr>
 				<tr>
 					<td>密码</td>
-					<td><input type="text" name="password" /></td>
+					<td><input type="password" name="password" /></td>
 				</tr>
 				<tr>
 					<td>确认密码</td>
-					<td><input type="text" name="repassword" /></td>
+					<td><input type="password" name="repassword" /></td>
 				</tr>
 				<tr>
 					<td>邮箱</td>
